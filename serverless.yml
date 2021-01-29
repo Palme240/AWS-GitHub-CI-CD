@@ -19,10 +19,9 @@ function:
         - AWSLambdaBasicExecutionRole
     events:
      - http:
-          path: /Hello
-          method: get
+        path: /Hello
+        method: get
 
-function:
   function2:
     handler: Lambda_function2.lambda_handler2
     runtime: python3.8
@@ -36,5 +35,5 @@ function:
         - AmazonDynamoDBFullAccess
     events:
      - http:
-          path: /customer
-          method: post
+        path: /customer
+        method: post
