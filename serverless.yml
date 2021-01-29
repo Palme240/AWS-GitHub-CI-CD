@@ -4,37 +4,36 @@ provider:
   runtime: python3.8
   region: eu-central-1 
   
-functions:
+Functions:
   HelloWorldFunction-GitHub:
-      handler: Lambda_function.lambda_handler
-      runtime: python3.8
-      timeout: 300
-      memorySize: 256
-      policies:
+      Handler: handler/aws.lambda_handler
+      Runtime: python3.8
+      Timeout: 300
+      MemorySize: 256
+      Policies:
         - AmazonS3FullAccess
         - AmazonTextractFullAccess
         - CloudWatchLogsFullAccess
         - AWSLambdaBasicExecutionRole
-      events:
+      Events:
         MyApi:
-          type: api
-          properties:
-            path: /Hello
-            method: get
+          Type: Api
+          Properties:
+            Path: /Hello
+            Method: get
 
   PostFunction-GitHub:
-      handler: Lambda_function2.lambda_handler2
-      handler: python3.8
-      timeout: 300
-      memorySize: 256
-      policies:
+      Handler: handler/aws.lambda_handler
+      Runtime: python3.8
+      Timeout: 300
+      MemorySize: 256
+      Policies:
         - AmazonS3FullAccess
         - AmazonTextractFullAccess
         - CloudWatchLogsFullAccess
         - AWSLambdaBasicExecutionRole
-      events:
+      Events:
         MyApi:
-          type: Api
-          properties:
-            path: /Customer
-            method: post
+          Type: Api
+          Properties:
+            Path: /Custom
