@@ -1,16 +1,11 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
 service: GitHubActions
 provider:
   name: aws
   runtime: python3.8
   region: eu-central-1 
 
-  Function:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      FunctionName: HelloWorldFunction-GitHub
+Function:
+  HelloWorldFunction-GitHub:
       Handler: Lambda_function.lambda_handler
       Runtime: python3.8
       Timeout: 300
@@ -28,11 +23,8 @@ provider:
             Path: /Hello
             Method: get
             
-  Function2:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      FunctionName: PostFunction-GitHub
+Function2:
+  PostFunction-GitHub:
       Handler: Lambda_function2.lambda_handler2
       Runtime: python3.8
       Timeout: 300
