@@ -1,13 +1,13 @@
 service: GitHubActions
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.8
   region: eu-central-1 
   
 functions:
   HelloWorldFunction-GitHub:
       handler: Lambda_function.lambda_handler
-      runtime: python3.7
+      runtime: python3.8
       timeout: 300
       memorySize: 256
       policies:
@@ -24,7 +24,7 @@ functions:
 
   PostFunction-GitHub:
       handler: Lambda_function2.lambda_handler2
-      handler: python3.7
+      handler: python3.8
       timeout: 300
       memorySize: 256
       policies:
