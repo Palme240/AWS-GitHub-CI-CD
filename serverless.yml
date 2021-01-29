@@ -5,46 +5,38 @@ provider:
   region: eu-central-1 
   
 Function:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      FunctionName: HelloWorldFunction-GitHub
-      Handler: Lambda_function.lambda_handler
-      Runtime: python3.8
-      Timeout: 300
-      MemorySize: 256
-      AutoPublishAlias: DEV
-      Policies:
-        - AmazonS3FullAccess
-        - AmazonTextractFullAccess
-        - CloudWatchLogsFullAccess
-        - AWSLambdaBasicExecutionRole
-      Events:
-        MyApi:
-          Type: Api
-          Properties:
-            Path: /Hello
-            Method: get
+  Handler: Lambda_function.lambda_handler
+  Runtime: python3.8
+  Timeout: 300
+  MemorySize: 256
+  AutoPublishAlias: DEV
+  Policies:
+    - AmazonS3FullAccess
+    - AmazonTextractFullAccess
+    - CloudWatchLogsFullAccess
+    - AWSLambdaBasicExecutionRole
+  Events:
+    MyApi:
+      Type: Api
+      Properties:
+        Path: /Hello
+        Method: get
             
   Function2:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      FunctionName: PostFunction-GitHub
-      Handler: Lambda_function2.lambda_handler2
-      Runtime: python3.8
-      Timeout: 300
-      MemorySize: 256
-      AutoPublishAlias: DEV
-      Policies:
-        - AmazonS3FullAccess
-        - AmazonTextractFullAccess
-        - CloudWatchLogsFullAccess
-        - AWSLambdaBasicExecutionRole
-        - AmazonDynamoDBFullAccess
-      Events:
-        MyApi:
-          Type: Api
-          Properties:
-            Path: /customer
-            Method: post
+    Handler: Lambda_function2.lambda_handler2
+    Runtime: python3.8
+    Timeout: 300
+    MemorySize: 256
+    AutoPublishAlias: DEV
+    Policies:
+      - AmazonS3FullAccess
+      - AmazonTextractFullAccess
+      - CloudWatchLogsFullAccess
+      - AWSLambdaBasicExecutionRole
+      - AmazonDynamoDBFullAccess
+    Events:
+      MyApi:
+        Type: Api
+        Properties:
+          Path: /customer
+          Method: post
