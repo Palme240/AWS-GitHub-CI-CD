@@ -1,44 +1,40 @@
 service: GitHubActions
+
 provider:
   name: aws
-  runtime: python3.8
-  region: eu-central-1 
+  runtime: python3.7
+  stage: dev
+  region: eu-central-1
+      
+function:
+  function1:
+    handler: Lambda_function.lambda_handler
+    runtime: python3.7
+    timeout: 300
+    memorySize: 256
+    Policies:
+      - AmazonS3FullAccess
+      - AmazonTextractFullAccess
+      - CloudWatchLogsFullAccess
+      - AWSLambdaBasicExecutionRole
+    events:
+     - http:
+          path: /Hello
+          method: get
 
-Function:
-  HelloWorldFunction-GitHub:
-      Handler: Lambda_function.lambda_handler
-      Runtime: python3.8
-      Timeout: 300
-      MemorySize: 256
-      AutoPublishAlias: DEV
-      Policies:
-        - AmazonS3FullAccess
-        - AmazonTextractFullAccess
-        - CloudWatchLogsFullAccess
-        - AWSLambdaBasicExecutionRole
-      Events:
-        MyApi:
-          Type: Api
-          Properties:
-            Path: /Hello
-            Method: get
-            
-Function2:
-  PostFunction-GitHub:
-      Handler: Lambda_function2.lambda_handler2
-      Runtime: python3.8
-      Timeout: 300
-      MemorySize: 256
-      AutoPublishAlias: DEV
-      Policies:
-        - AmazonS3FullAccess
-        - AmazonTextractFullAccess
-        - CloudWatchLogsFullAccess
-        - AWSLambdaBasicExecutionRole
-        - AmazonDynamoDBFullAccess
-      Events:
-        MyApi:
-          Type: Api
-          Properties:
-            Path: /customer
-            Method: post
+function:
+  function2:
+    handler: Lambda_function2.lambda_handler2
+    runtime: python3.7
+    timeout: 300
+    memorySize: 256
+    policies:
+      - AmazonS3FullAccess
+      - AmazonTextractFullAccess
+      - CloudWatchLogsFullAccess
+      - AWSLambdaBasicExecutionRole
+      - AmazonDynamoDBFullAccess
+    events:
+     - http:
+          path: /customer
+          method: post 
