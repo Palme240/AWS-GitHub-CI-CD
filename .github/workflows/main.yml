@@ -48,11 +48,9 @@ jobs:
          #install all dependencies as defined by requirements.txt in the current directory
          pip3 install -r requirements.txt
          npm install
-         #ensuring current working directory is accessible by the function--this might not be doing anything
-         export PATH=$PATH:$(pwd)
-    
+         
     #Deploy main.py to AWS
     - name: Serverless
-      uses: serverless/github-action@master
+      uses: serverless/github-action@main
       with:
         args: deploy --region eu-central-1
