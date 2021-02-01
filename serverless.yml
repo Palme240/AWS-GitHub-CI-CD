@@ -6,7 +6,6 @@ provider:
   stage: dev
   region: eu-central-1
 Resources:      
-  function:
     function1:
       handler: Lambda_function.lambda_handler
       runtime: python3.8
