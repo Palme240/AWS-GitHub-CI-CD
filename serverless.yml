@@ -5,35 +5,35 @@ provider:
   runtime: python3.8
   stage: dev
   region: eu-central-1
-  
-functions:   
-    hello:
-      handler: Lambda_function.lambda_handler
-      runtime: python3.8
-      timeout: 300
-      memorySize: 256
-      Policies:
-          - AmazonS3FullAccess
-          - AmazonTextractFullAccess
-          - CloudWatchLogsFullAccess
-          - AWSLambdaBasicExecutionRole
-      events:
-       - http:
-          path: /Hello
-          method: get
+resources:
+  Resources:
+        hello:
+          handler: Lambda_function.lambda_handler
+          runtime: python3.8
+          timeout: 300
+          memorySize: 256
+          Policies:
+              - AmazonS3FullAccess
+              - AmazonTextractFullAccess
+              - CloudWatchLogsFullAccess
+              - AWSLambdaBasicExecutionRole
+          events:
+           - http:
+              path: /Hello
+              method: get
 
-    PostFonction:
-      handler: Lambda_function2.lambda_handler2
-      runtime: python3.8
-      timeout: 300
-      memorySize: 256
-      Policies:
-          - AmazonS3FullAccess
-          - AmazonTextractFullAccess
-          - CloudWatchLogsFullAccess
-          - AWSLambdaBasicExecutionRole
-          - AmazonDynamoDBFullAccess
-      events:
-       - http:
-          path: /customer
-          method: post
+        PostFonction:
+          handler: Lambda_function2.lambda_handler2
+          runtime: python3.8
+          timeout: 300
+          memorySize: 256
+          Policies:
+              - AmazonS3FullAccess
+              - AmazonTextractFullAccess
+              - CloudWatchLogsFullAccess
+              - AWSLambdaBasicExecutionRole
+              - AmazonDynamoDBFullAccess
+          events:
+           - http:
+              path: /customer
+              method: post
