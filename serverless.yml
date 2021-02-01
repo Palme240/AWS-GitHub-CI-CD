@@ -6,8 +6,8 @@ provider:
   stage: dev
   region: eu-central-1
   
-resources:      
-    function1:
+functions:   
+    hello:
       handler: Lambda_function.lambda_handler
       runtime: python3.8
       timeout: 300
@@ -22,7 +22,7 @@ resources:
           path: /Hello
           method: get
 
-    function2:
+    PostFonction:
       handler: Lambda_function2.lambda_handler2
       runtime: python3.8
       timeout: 300
