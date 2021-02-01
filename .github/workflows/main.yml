@@ -45,6 +45,6 @@ jobs:
 
     #Deploy main.py to AWS
     - name: Serverless
-      uses: serverless/github-action@master
+      uses: dhollerbach/github-action-serverless-with-python-requirements@master
       with:
         args: deploy --region eu-central-1
